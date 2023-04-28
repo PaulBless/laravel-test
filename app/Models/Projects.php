@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Projects extends Model
 {
-    // use HasFactory;
+    use HasFactory;
     use SoftDeletes;
+
+    protected $table = 'projects';
 
     public function tasks(){
         return $this->hasMany(Tasks::class);
+
     }
 
     public function scopeHasTasks($q){

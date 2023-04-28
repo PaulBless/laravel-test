@@ -20,15 +20,15 @@ Route::get('/', function () {
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// New Routes
+// Redirect to login page
 Route::get('/', function () {
-    return redirect()->route('tasks.index');
+    return redirect()->route('projects.index');
 });
 
 Auth::routes();
 
 Route::get('/home', function () {
-    return redirect()->route('tasks.index');
+    return redirect()->route('projects.index');
 })->name('home');
 
 Route::resource('tasks', 'TasksController')->parameters(['tasks' => 'id'])->middleware('auth');

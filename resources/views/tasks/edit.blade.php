@@ -51,14 +51,15 @@
                         <div class="form-group">
                             <label>Project</label>
                             <select class="form-control" name="project_id">
-                                <option value="">-</option>
+                                <option value="">-Select-</option>
                                 @foreach( $projects as $project )
                                     <option value="{{ $project->id }}">{{ $project->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+                        <br/>
 
-                        <button type="submit" class="btn btn-success">Update</button>
+                        <button type="submit" class="btn btn-success mr-3">Update</button>
                         <a href="{{ route('tasks.index') }}" class="btn btn-warning">Cancel</a>
                     </form>
                 </div>

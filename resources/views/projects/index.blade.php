@@ -13,7 +13,11 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col">Projects</div>
+                        <div class="col">Projects List</div>
+                        <div class="col-auto">
+                            <a href="{{ route('projects.create') }}" class="pull-right mb-3">Create A Project.</a>
+                            
+                        </div>
                     </div>
                 </div>
 
@@ -41,7 +45,7 @@
                             @endforeach
                         </ul>
                     @else
-                        <p>There is no projects yet, <a href="{{ route('projects.create') }}">Create the first one.</a></p>
+                        <p>No projects found, <a href="{{ route('projects.create') }}">Create a Project.</a></p>
                     @endif
                 </div>
             </div>

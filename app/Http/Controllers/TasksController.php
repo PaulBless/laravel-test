@@ -19,8 +19,10 @@ class TasksController extends Controller
     {
         // fetch and return all projects and tasks
         $tasks    = Tasks::orderBy('priority', 'asc')->get();
-        // $projects = Projects::all(); 
-        $projects = Projects::hasTasks()->get(); 
+        $projects = Projects::all();
+        
+        // $projects = Projects::with('tasks')->get()->toArray();
+        // $projects = Projects::hasTasks()->get(); 
 
         return view('tasks.index', compact('tasks', 'projects'));
     }
@@ -51,14 +53,14 @@ class TasksController extends Controller
         $request->validate([
             'name'       => 'required',
             'user_id'    => 'nullable|exists:users,id',
-            'project_id' => 'nullable|exists:projects,id',
+            'projectid' => 'nullable|exists:projects,id',
         ]);
 
         $maxPrioroty = Tasks::max('priority') ?: 0;
 
         $newTask             = new Tasks();
         $newTask->name       = $request->name;
-        $newTask->project_id = $request->project_id;
+        $newTask->projectid = $request->project_id;
         $newTask->priority   = ++$maxPrioroty;
 
         $newTask->save();
@@ -107,12 +109,12 @@ class TasksController extends Controller
         $request->validate([
             'name'       => 'required',
             'user_id'    => 'nullable|exists:users,id',
-            'project_id' => 'nullable|exists:projects,id',
+            'projectid' => 'nullable|exists:projects,id',
         ]);
 
         $task->name       = $request->name;
         $task->user_id    = $request->user_id;
-        $task->project_id = $request->project_id;
+        $task->projectid = $request->project_id;
 
         $task->save();
 

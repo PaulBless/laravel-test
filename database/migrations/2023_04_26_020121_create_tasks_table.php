@@ -18,15 +18,15 @@ return new class extends Migration
             $table->string('name');
             $table->integer('priority')->unsigned();
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->bigInteger('project_id')->unsigned()->nullable();
+            $table->bigInteger('projectid')->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
 
             $table->index('user_id');
-            $table->index('project_id');
+            $table->index('projectid');
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('projectid')->references('id')->on('projects');
         });
     }
 

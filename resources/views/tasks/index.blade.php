@@ -13,12 +13,15 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col">Tasks</div>
+                        <div class="col">
+                            <a href="{{ route('tasks.create') }}">Create a Task</a>
+                        </div>
                         <div class="col-auto">
+                            
                             <select class="form-control" name="projects">
                                 <option value="">- All Projects -</option>
                                 @foreach( $projects as $project )
-                                    <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                <option value="{{ $project->id }}">{{ $project->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -48,7 +51,7 @@
                             @endforeach
                         </ul>
                     @else
-                        <p>There is no tasks yet, <a href="{{ route('tasks.create') }}">Create the first one.</a></p>
+                        <p>No tasks yet, <a href="{{ route('tasks.create') }}">Create a Task.</a></p>
                     @endif
                 </div>
             </div>
@@ -81,7 +84,8 @@
 
         $('[name="projects"]').on('change', function(){
             var $this = $(this);
-            
+            console.log($this);
+
             if( $this.val() ){
                 $('.tasks li').hide();
 

@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tasks extends Model
 {
-    // use HasFactory;
+    use HasFactory;
     use SoftDeletes;
 
-    protected $primaryKey = 'id';
+    // protected $primaryKey = 'id';
     
     public function project(){
         return $this->belongsTo(Projects::class);
+        // return $this->belongsTo('App\Models\Projects','projectid');    
+
     }
 
     public function owner(){
@@ -22,7 +24,7 @@ class Tasks extends Model
     }
 
     public function scopeWhereProject($q, $id){
-        $q->where('project_id', $id);
+        $q->where('projectid', $id);
     }
 
 }
