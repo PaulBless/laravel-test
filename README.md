@@ -15,7 +15,8 @@ You will be graded on how well-written & readable your code is, if it works, and
 
 ## Installation & Setup
 1 Clone the project from using this command:
-    git clone https://github.com/PaulBless/taravel-task.git
+    git clone https://github.com/PaulBless/laravel-test.git
+    
 
 2 After cloning the project, install the dependencies using the following command:
     composer install
